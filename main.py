@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 URL_LA_NACION = 'https://www.lanacion.com.ar/'
 URL_PAGINA = 'https://www.pagina12.com.ar/'
 URL_INFOBAE = 'https://www.infobae.com/'
+URL_TIEMPOARG = 'https://www.tiempoar.com.ar/informacion-general/'
 
 class ExtractTitulos:
     def __init__(self): 
@@ -31,14 +32,24 @@ class ExtractTitulos:
     def InfoBae_titulos(self):
         soup = self.Soup_extractor(URL_INFOBAE)
         content_titulos = soup.find_all('div','tcc_itm tcc_bc')
+        for i in content_titulos:
+            print(i.get_text())
+
+
+    def Tiempo_titulos(self):
+        soup = self.Soup_extractor(URL_TIEMPOARG)
+        content_titulos = soup.find_all('div',class_="title")
         print(content_titulos)
         for i in content_titulos:
             print(i.get_text())
 
 
+    
+
+
 
 if __name__ == '__main__':
     ln = ExtractTitulos()
-    ln.InfoBae_titulos()
+    ln.Tiempo_titulos()
     
     
