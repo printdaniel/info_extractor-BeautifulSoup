@@ -3,6 +3,8 @@ import requests
 from bs4 import BeautifulSoup
 URL_LA_NACION = 'https://www.lanacion.com.ar/'
 URL_PAGINA = 'https://www.pagina12.com.ar/'
+URL_INFOBAE = 'https://www.infobae.com/'
+
 class ExtractTitulos:
     def __init__(self): 
         pass
@@ -21,11 +23,15 @@ class ExtractTitulos:
             print(sub[0].attrs.get('title'))
 
     def Pagina_titulos(self):
-        #article-title
-        #aref
-        #element title
         soup = self.Soup_extractor(URL_PAGINA)
         content_titulos = soup.find_all('div','element title')
+        for i in content_titulos:
+            print(i.get_text())
+
+    def InfoBae_titulos(self):
+        soup = self.Soup_extractor(URL_INFOBAE)
+        content_titulos = soup.find_all('div','tcc_itm tcc_bc')
+        print(content_titulos)
         for i in content_titulos:
             print(i.get_text())
 
@@ -33,6 +39,6 @@ class ExtractTitulos:
 
 if __name__ == '__main__':
     ln = ExtractTitulos()
-    ln.Pagina_titulos()
+    ln.InfoBae_titulos()
     
     
