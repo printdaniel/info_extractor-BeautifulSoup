@@ -38,18 +38,25 @@ class ExtractTitulos:
 
     def Tiempo_titulos(self):
         soup = self.Soup_extractor(URL_TIEMPOARG)
-        content_titulos = soup.find_all('div',class_="title")
-        print(content_titulos)
-        for i in content_titulos:
-            print(i.get_text())
+        content_titulos = soup.find_all('div',attrs={'title'})
+        try:
+            for i in content_titulos:
+                print(i.find('p').get_text())
+        except AttributeError :
+            print("\n")
 
 
-    
-
+    def Main(self):
+        print("\n TITULOS LA NACION")
+        self.Nacion_titulos()
+        print("\n TITULOS LA PAGINA 12")
+        self.Pagina_titulos() 
+        print("\n TITULOS LA INFOBAE") 
+        self.InfoBae_titulos()
+        print("\n TITULOS LA TIEMPO ARGENTINO")
+        self.Tiempo_titulos()
 
 
 if __name__ == '__main__':
     ln = ExtractTitulos()
-    ln.Tiempo_titulos()
-    
-    
+    ln.Main()
