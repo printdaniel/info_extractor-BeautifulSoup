@@ -8,7 +8,7 @@ URL_TIEMPOARG = 'https://www.tiempoar.com.ar/informacion-general/'
 
 class ExtractTitulos:
     def __init__(self): 
-        pass
+        self.Main()
 
     def Soup_extractor(self,url):
         page = requests.get(url)
@@ -59,4 +59,3 @@ class ExtractTitulos:
 
 if __name__ == '__main__':
     ln = ExtractTitulos()
-    ln.Main()
