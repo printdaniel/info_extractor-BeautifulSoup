@@ -1,10 +1,9 @@
 """ App extrae los títulos de los diarios"""
 import requests
 from bs4 import BeautifulSoup
-URL_LA_NACION = 'https://www.lanacion.com.ar/'
-URL_PAGINA = 'https://www.pagina12.com.ar/'
-URL_INFOBAE = 'https://www.infobae.com/'
-URL_TIEMPOARG = 'https://www.tiempoar.com.ar/informacion-general/'
+from constantes import *
+
+
 
 class ExtractTitulos:
     def __init__(self): 
